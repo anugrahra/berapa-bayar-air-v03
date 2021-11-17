@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <title>Berapa Bayar Air</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Hello, world!</h1>
+    <div>
+      <div class="mb-3">
+        <label for="kelompok" class="form-label">Kelompok</label>
+        <select class="form-select" id="kelompok">
+          <option> -- Pilih Kelompok -- </option>
+          <optgroup label="Kelompok 1">
+            <option value="Rumah Tinggal 1 (R.1)|1|1">Rumah Tinggal 1 (R.1)</option>
+            <option value="Rumah Susun Sewa|1|2">Rumah Susun Sewa</option>
+            <option value="Badan Amal/Sosial|1|2">Badan Amal/Sosial</option>
+            <option value="Kran Umum|1|2">Kran Umum</option>
+            <option value="Rumah Ibadah|1|2">Rumah Ibadah</option>
+          </optgroup>
+          <optgroup label="Kelompok 2">
+            <option value="Rumah Tinggal 2 (R.1)|2|3">Rumah Tinggal 2 (R.1)</option>
+            <option value="Rumah Tinggal 2 (R.2)|2|4">Rumah Tinggal 2 (R.2)</option>
+            <option value="Lembaga Pemerintahan|2|3">Lembaga Pemerintahan</option>
+            <option value="Lembaga Pendidikan/Kesehatan|2|3">Lembaga Pendidikan/Kesehatan</option>
+            <option value="Lembaga Pemerintahan Lainnya (TNI/POLRI)|2|3">Lembaga Pemerintahan Lainnya (TNI/POLRI)</option>
+            <option value="Niaga dan Jasa Kecil|2|3">Niaga dan Jasa Kecil</option>
+            <option value="Industri Kecil|2|3">Industri Kecil</option>
+            <option value="Niaga dan Jasa Sedang|2|5">Niaga dan Jasa Sedang</option>
+            <option value="Industri Sedang|2|5">Industri Sedang</option>
+          </optgroup>
+          <optgroup label="Kelompok 3">
+            <option value="Rumah Tinggal 3 (R.1)|3|6">Rumah Tinggal 3 (R.1)</option>
+            <option value="Rumah Tinggal 3 (R.2)|3|7">Rumah Tinggal 3 (R.2)</option>
+            <option value="Niaga dan Jasa Besar|3|7">Niaga dan Jasa Besar</option>
+            <option value="Industri Besar|3|7">Industri Besar</option>
+          </optgroup>
+          <optgroup label="Kelompok Khusus">
+            <option value="Non Komersial|4|8">Non Komersial</option>
+            <option value="Komersial|4|9">Komersial</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="standbulanlalu" class="form-label">Stand Bulan Lalu</label>
+        <input type="number" id="standbulanlalu" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="standbulansekarang" class="form-label">Stand Bulan Sekarang</label>
+        <input type="number" id="standbulansekarang" class="form-control">
+      </div>
+      <button class="btn btn-primary" onclick="hitung()" data-bs-toggle="modal" data-bs-target="#modalHitung">Hitung</button>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalHitung" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Berapa Bayar Air</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-bordered">
+            <tr>
+              <td>Kelompok</td>
+              <td><div id="dataKelompok"></div></td>
+            </tr>
+            <tr>
+              <td>Pemakaian Air</td>
+              <td><span id="dataPemakaianair">0</span>&nbsp;m<sup>3</sup></td>
+            </tr>
+            <tr>
+              <td>Beban Tetap Administrasi</td>
+              <td>Rp&nbsp;<span id="dataBebantetapadministrasi"></span></td>
+            </tr>
+            <tr>
+              <td>Blok 1-10 m<sup>3</sup></td>
+              <td>Rp&nbsp;<span id="dataBlok1"></span></td>
+            </tr>
+            <tr>
+              <td>Blok 11-20 m<sup>3</sup></td>
+              <td>Rp&nbsp;<span id="dataBlok2"></span></td>
+            </tr>
+            <tr>
+              <td>Blok 21-30 m<sup>3</sup></td>
+              <td>Rp&nbsp;<span id="dataBlok3"></span></td>
+            </tr>
+            <tr>
+              <td>Blok > 30 m<sup>3</sup></td>
+              <td>Rp&nbsp;<span id="dataBlok4"></span></td>
+            </tr>
+            <tr>
+              <td><b>Total</b></td>
+              <td><b>Rp&nbsp;<span id="dataTotal">0</></b></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td>Denda<br><span style="font-size: 0.75em;">(apabila membayar lebih dari tgl 15)</span></td>
+              <td>Rp&nbsp;<span id="dataDendaketerlambatan"></span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
