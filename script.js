@@ -18,7 +18,7 @@ function hitung() {
   let dataBlok4 = document.getElementById("dataBlok4");
   let dataTotal = document.getElementById("dataTotal");
 
-  let bebantetapadministrasi = 20000;
+  let bebantetapadministrasi = parseInt(20000).toLocaleString('id');
 
   let blok1 = '';
   let blok2 = '';
@@ -115,7 +115,7 @@ function hitung() {
   }
 
   // total tarif
-  let totaltarif = bebantetapadministrasi + tarifblok1 + tarifblok2 + tarifblok3 + tarifblok4;
+  let totaltarif = parseInt(bebantetapadministrasi) + parseInt(tarifblok1) + parseInt(tarifblok2) + parseInt(tarifblok3) + parseInt(tarifblok4);
 
   // show data tarif
   // show kelompok
@@ -125,12 +125,12 @@ function hitung() {
   // show beban tetap administrasi
   dataBebantetapadministrasi.innerHTML = bebantetapadministrasi;
   // show denda keterlambatan
-  dataDendaketerlambatan.innerHTML = dendaketerlambatan;
+  dataDendaketerlambatan.innerHTML = parseInt(dendaketerlambatan).toLocaleString('id');
   // show tarif per blok
-  dataBlok1.innerHTML = tarifblok1;
-  dataBlok2.innerHTML = tarifblok2;
-  dataBlok3.innerHTML = tarifblok3;
-  dataBlok4.innerHTML = tarifblok4;
+  dataBlok1.innerHTML = parseInt(tarifblok1).toLocaleString('id');
+  dataBlok2.innerHTML = parseInt(tarifblok2).toLocaleString('id');
+  dataBlok3.innerHTML = parseInt(tarifblok3).toLocaleString('id');
+  dataBlok4.innerHTML = parseInt(tarifblok4).toLocaleString('id');
   // show total tarif
-  dataTotal.innerHTML = totaltarif;
+  dataTotal.innerHTML = parseInt(totaltarif).toLocaleString('id');
 }
