@@ -80,7 +80,7 @@ function hitung() {
     blok2 = 3500;
     blok3 = 3500;
     blok4 = 3500;
-  } else if (blokkelompok == 4) {
+  } else if (blokkelompok == 9) {
     blok1 = 4600;
     blok2 = 4600;
     blok3 = 4600;
